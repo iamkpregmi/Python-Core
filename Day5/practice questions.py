@@ -130,7 +130,7 @@ import json
 # print(result)
 
 #---------------------------------------------------------------------------------------------------
-# df = pd.read_csv('company_data.csv', sep=",")
+df = pd.read_csv('company_data.csv', sep=",")
 
 # # CSV to Excel Conversion
 # columns_list = ['Location','CompanyName','Rate']
@@ -138,9 +138,55 @@ import json
 
 # final_data.to_excel('company_details.xlsx', index=False)
 
+#---------------------------------------------------------------------------------------------------
 
-#fill color on the excel cell
+# import openpyxl
+# from openpyxl.styles import PatternFill, Font
+
+# # Load the workbook and select the sheet
+# wb = openpyxl.load_workbook("company_details.xlsx")
+# ws = wb['Sheet1']
+
+# # Define yellow fill (standard hex code: FFFF00)
+# yellow_fill = PatternFill(start_color="FFFF00",
+#                           fill_type="solid")
+
+# red_font = Font(color="FF0000")
+
+# # Apply the fill to cell A1
+# cell = ws["A3"]
+# cell.fill = yellow_fill
+# cell.font = red_font
+
+# # Save the modified workbook
+# wb.save("output_data.xlsx")
+
+
+#---------------------------------------------------------------------------------------------------
+# Highlight Cell Background color
+import openpyxl
+from openpyxl.styles import PatternFill
+
+# Open the Excel file
+wb = openpyxl.load_workbook("company_details.xlsx")
+ws = wb['Sheet1']
+
+# Create yellow color fill
+yellow_fill = PatternFill(fill_type='solid', start_color='FFFF00')
+
+# Go through each row starting from row 2 (to skip the header)
+for row in ws.iter_rows(min_row=2): #iterate each row skip first row start iterating from second row
+    rate_cell = row[2]  # 3rd column is "Rate"
+    if rate_cell.value > 400:
+        rate_cell.fill = yellow_fill  # Apply yellow color
+
+# # Set the height of row 2
+# ws.row_dimensions[2].height = 30  # You can change 30 to whatever height you want       
+
+ws.column_dimensions['B'].width = 30  # You can change 30 to any width you want(width 30 unit[1 unit ≈ 7-8 pixels])
+ws.column_dimensions['A'].width = 30
+# Save the file with a new name
+wb.save("company_details_highlighted.xlsx")
 
 
 
-#
