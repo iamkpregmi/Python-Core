@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-df = pd.read_csv('company_data.csv', sep=",")
+# df = pd.read_csv('company_data.csv', sep=",")
 
 # # Write a code for the show starting 10 records
 # starting_10_records = df.head(10) 
@@ -74,11 +74,33 @@ df = pd.read_csv('company_data.csv', sep=",")
 # df = pd.read_csv('company_data.csv', skiprows=1)
 # print(df)
 
-# Show all data of the those which unit more then 300
-result = df[df['Unit']>300]
-result = result.sort_values(by='Unit', ascending=True)
+# # Show all data of the those which unit more then 300
+# result = df[df['Unit']>300]
+# result = result.sort_values(by='Unit', ascending=True)
 
-print(result)
+# print(result)
+
+# # Show all data of the those which unit between 301 to 400
+# result = df[df['Unit'].between(300,400)]
+# result = result.sort_values(by='Unit', ascending=True)
+
+# print(result)
+
+
+# Show all data of the those which unit between 301 to 400 and sum of number
+# result = df[df['Unit'].between(300,400)]
+# unit_sum = result['Unit'].sum()
+# print(unit_sum)
+
+# unit_sum = df.loc[df['Unit'].between(300, 400), 'Unit'].sum()
+# print(unit_sum)
+
+
+# # Replace blank value to the 0
+# result = df.head(10)
+# result.fillna(0, inplace=True)
+# print(result)
+
 
 #---------------------------------------------------------------------------------------------------
 
@@ -93,5 +115,32 @@ print(result)
 
 # for i in range(0,10):
 #     print(python_dict[i])
+#---------------------------------------------------------------------------------------------------
+
+# df = pd.read_csv('employees.csv', sep=",")
+# result = df.groupby('Department').sum()
+
+# # Sum of the Salary Department wise
+# result = df.groupby('Department')['Salary'].sum()
+# print(result)
 
 
+# # Average Salary of employee Department wise
+# result = df.groupby('Department')['Salary'].mean()
+# print(result)
+
+#---------------------------------------------------------------------------------------------------
+# df = pd.read_csv('company_data.csv', sep=",")
+
+# # CSV to Excel Conversion
+# columns_list = ['Location','CompanyName','Rate']
+# final_data = df[columns_list]
+
+# final_data.to_excel('company_details.xlsx', index=False)
+
+
+#fill color on the excel cell
+
+
+
+#
