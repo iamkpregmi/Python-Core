@@ -163,30 +163,30 @@ df = pd.read_csv('company_data.csv', sep=",")
 
 
 #---------------------------------------------------------------------------------------------------
-# Highlight Cell Background color
-import openpyxl
-from openpyxl.styles import PatternFill
+# # Highlight Cell Background color
+# import openpyxl
+# from openpyxl.styles import PatternFill
 
-# Open the Excel file
-wb = openpyxl.load_workbook("company_details.xlsx")
-ws = wb['Sheet1']
+# # Open the Excel file
+# wb = openpyxl.load_workbook("company_details.xlsx")
+# ws = wb['Sheet1']
 
-# Create yellow color fill
-yellow_fill = PatternFill(fill_type='solid', start_color='FFFF00')
+# # Create yellow color fill
+# yellow_fill = PatternFill(fill_type='solid', start_color='FFFF00')
 
-# Go through each row starting from row 2 (to skip the header)
-for row in ws.iter_rows(min_row=2): #iterate each row skip first row start iterating from second row
-    rate_cell = row[2]  # 3rd column is "Rate"
-    if rate_cell.value > 400:
-        rate_cell.fill = yellow_fill  # Apply yellow color
+# # Go through each row starting from row 2 (to skip the header)
+# for row in ws.iter_rows(min_row=2): #iterate each row skip first row start iterating from second row
+#     rate_cell = row[2]  # 3rd column is "Rate"
+#     if rate_cell.value > 400:
+#         rate_cell.fill = yellow_fill  # Apply yellow color
 
-# # Set the height of row 2
-# ws.row_dimensions[2].height = 30  # You can change 30 to whatever height you want       
+# # # Set the height of row 2
+# # ws.row_dimensions[2].height = 30  # You can change 30 to whatever height you want       
 
-ws.column_dimensions['B'].width = 30  # You can change 30 to any width you want(width 30 unit[1 unit ≈ 7-8 pixels])
-ws.column_dimensions['A'].width = 30
-# Save the file with a new name
-wb.save("company_details_highlighted.xlsx")
+# ws.column_dimensions['B'].width = 30  # You can change 30 to any width you want(width 30 unit[1 unit ≈ 7-8 pixels])
+# ws.column_dimensions['A'].width = 30
+# # Save the file with a new name
+# wb.save("company_details_highlighted.xlsx")
 
 
 

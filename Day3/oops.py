@@ -166,3 +166,19 @@
 # print(f"Rectange Perimeter: {rectangle.area()}")
 # print(f"Rectange Perimeter: {rectangle.perimeter()}")
 
+
+
+#Operator Overloading [Want to compare age]
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __gt__(self,other):
+        return True if self.age > other.age else False
+
+
+roger = Dog('Roger',8)
+syd = Dog('Syd', 12)
+
+print(roger > syd) #False
